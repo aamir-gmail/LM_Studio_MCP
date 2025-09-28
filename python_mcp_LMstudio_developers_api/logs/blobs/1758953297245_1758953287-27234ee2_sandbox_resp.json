@@ -1,0 +1,11 @@
+{
+  "stdout": "Graph has been generated as 'usda_agency_structure.png'\n",
+  "stderr": "",
+  "returncode": 0,
+  "images": [
+    {
+      "filename": "20250927-060816-732fb3/usda_agency_structure.png",
+      "content_type": "image/png"
+    }
+  ]
+}

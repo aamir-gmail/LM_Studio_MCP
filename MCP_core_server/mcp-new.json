@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "python-sandbox": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "--init",
+        "-i",
+        "-p", "18081:18081",              // REST server can use another port; not needed for downloads
+        "-e", "PUBLIC_BASE_URL",
+        "-e", "PUBLIC_BASE_URL_PLAIN",    // tell MCP to emit plain URLs
+        "-e", "REST_PORT",
+        "-v", "/4tbstorage/python_sandbox/artifacts:/app/temp", // replace with with you own local path.
+        "python-sandbox-integrated_v2:latest",
+        "python",
+        "/app/mcp_server.py",
+        "--stdio"
+      ],
+      "env": {
+        "PUBLIC_BASE_URL": "http://192.168.1.133:18080", //replace this with you own,
+        "PUBLIC_BASE_URL_PLAIN": "1",
+        "REST_PORT": "18081"              // avoid 8000 collisions; REST is optional now
+      },
+      "disabled": false
+    }
+  }
+}
+// if you are going to use this in chat interface of the the simply copy and paste this file in the in  LM studio 
+// mcp.json. Please remove these commevt from the mpc.json as LM stusio does not like this.
+// In order to preserve the images generated a seperate docker compose file is provided  to run the HTTP server 
+// Please make sure that it is running.
+

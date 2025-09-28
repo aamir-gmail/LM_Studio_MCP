@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-xkseldw3opzccerbdz42",
+  "object": "chat.completion",
+  "created": 1758953744,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I've successfully created a Graphviz visualization of the USDA organizational structure based on your JSON data.\n\nThe visualization shows:\n- The United States Department of Agriculture (USDA) positioned on the left\n- All 16 sub-agencies arranged horizontally to the right\n- Directed edges showing that USDA \"operates\" each of the sub-agencies\n\nHere's the generated image:\n\n![](http://192.168.1.133:18080/20250927-061544-bd9753/usda_organization.png)\n\nThe graph uses a left-to-right layout as requested, with USDA positioned on the far left and all other nodes arranged to its right. Each connection is labeled with \"operates\" to show the relationship between USDA and each of its sub-agencies.\n\nThe visualization clearly shows the organizational structure where USDA serves as the parent entity operating all the various agricultural service agencies.\n<tool_call>",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3331,
+    "completion_tokens": 200,
+    "total_tokens": 3531
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

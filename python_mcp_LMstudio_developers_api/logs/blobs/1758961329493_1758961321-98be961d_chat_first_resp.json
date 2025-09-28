@@ -1,0 +1,34 @@
+{
+  "id": "chatcmpl-hpa80prr0aa439qewqlr1n",
+  "object": "chat.completion",
+  "created": 1758961321,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I'll create a visually appealing Graphviz graph to model the USDA organizational relationships from the provided JSON data. Let me plan this step by step.\n\n",
+        "tool_calls": [
+          {
+            "type": "function",
+            "id": "353825180",
+            "function": {
+              "name": "python_sandbox_execute",
+              "arguments": "{\"code\":\"import json\\nfrom graphviz import Graph\\n\\n# JSON data\\nusda_data = {\\n\\\"USDA\\\": {\\n\\\"Research_Statistics_Analysis\\\": [\\n\\\"Agricultural Research Service\\\",\\n\\\"Economic Research Service\\\",\\n\\\"National Agricultural Statistics Service\\\",\\n\\\"National Institute of Food and Agriculture\\\",\\n\\\"National Agricultural Library\\\",\\n\\\"World Agricultural Outlook Board\\\"\\n],\\n\\\"Food_Safety_Nutrition\\\": [\\n\\\"Food and Nutrition Service\\\",\\n\\\"Food Safety and Inspection Service\\\"\\n],\\n\\\"Marketing_Trade\\\": [\\n\\\"Agricultural Marketing Service\\\",\\n\\\"Foreign Agricultural Service\\\",\\n\\\"Commodity Credit Corporation\\\"\\n],\\n\\\"Farming_Risk_Management\\\": [\\n\\\"Farm Service Agency\\\",\\n\\\"Federal Crop Insurance Corporation\\\"\\n],\\n\\\"Animal_Plant_Health\\\": [\\n\\\"Animal and Plant Health Inspection Service\\\"\\n],\\n\\\"Forests_Conservation\\\": [\\n\\\"Forest Service\\\",\\n\\\"Natural Resources Conservation Service\\\"\\n],\\n\\\"Rural_Development\\\": [\\n\\\"Rural Business-Cooperative Service\\\",\\n\\\"Rural Development Administration\\\",\\n\\\"Rural Housing Service\\\",\\n\\\"Rural Utilities Service\\\"\\n],\\n\\\"Support_Offices\\\": [\\n\\\"Office of the Secretary of Agriculture\\\",\\n\\\"Office of Advocacy and Outreach\\\",\\n\\\"Office of the Chief Financial Officer\\\",\\n\\\"Office of Energy and Environmental Policy\\\",\\n\\\"Office of Energy Policy and New Uses\\\",\\n\\\"Office of Environmental Quality\\\",\\n\\\"Office of Information Resources Management\\\",\\n\\\"Office of Inspector General\\\",\\n\\\"Office of Operations\\\",\\n\\\"Office of Procurement and Property Management\\\",\\n\\\"Office of Transportation\\\"\\n]\\n}\\n}\\n\\n# Create a directed graph\\ndot = Graph(comment='USDA Organizational Structure', engine='dot')\\ndot.attr(rankdir='TB')  # Top to bottom layout\\n\\n# Add the main USDA node\\ndot.node('USDA', 'USDA', shape='box', style='filled', fillcolor='#4A90E2', fontcolor='white')\\n\\n# Create clusters for each category\\nfor category, agencies in usda_data['USDA'].items():\\n    # Create a subgraph (cluster) for each category\\n    with dot.subgraph(name=f'cluster_{category}') as c:\\n        c.attr(label=category.replace('_', ' '), style='filled', fillcolor='#f0f8ff')\\n        c.attr(penwidth='2')  # Border width\\n        \\n        # Add nodes for each agency in the category\\n        for agency in agencies:\\n            c.node(agency, agency, shape='ellipse', style='filled', fillcolor='#7FDBFF')\\n        \\n        # Connect category label to its agencies\\n        if len(agencies) > 0:\\n            c.edge(category.replace('_', ' '), agencies[0], style='invis')\\n\\n# Connect USDA to each category cluster\\ncategories = list(usda_data['USDA'].keys())\\nfor i, category in enumerate(categories):\\n    dot.edge('USDA', category.replace('_', ' '), style='bold')\\n\\n# Add connections between related nodes (if any)\\n# For this visualization, we'll focus on the hierarchical structure\\n\\n# Render the graph\\ndot.render('./usda_organizational_structure.gv', view=False)\\n\\n# Generate PNG image\\ndot.format = 'png'\\ndot.render('./usda_organizational_structure', view=True)\\n\\nprint(\\\"Graph has been created and saved as usda_organizational_structure.png\\\")\"}"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1222,
+    "completion_tokens": 712,
+    "total_tokens": 1934
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

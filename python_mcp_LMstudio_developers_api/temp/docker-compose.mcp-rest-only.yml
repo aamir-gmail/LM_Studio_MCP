@@ -1,0 +1,21 @@
+services:
+  mcp:
+    image: python-sandbox-integrated_v2:latest
+    container_name: mcp_server_only
+    environment:
+      # Your external plain HTTP server that serves artifacts (adjust if needed)
+      PUBLIC_BASE_URL: "http://192.168.1.133:18080"
+      PUBLIC_BASE_URL_MODE: "plain"
+    # Run ONLY the REST app; skip stdio entirely
+    command: ["uvicorn", "mcp_server:rest_app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "info"]
+    ports:
+      - "8000:8000"
+    # Share artifacts location (named volume is fine; or bind-mount your host dir if you prefer)
+    volumes:
+      - sandbox_artifacts:/app/temp
+    restart: unless-stopped
+
+volumes:
+  sandbox_artifacts:
+    driver: local
+

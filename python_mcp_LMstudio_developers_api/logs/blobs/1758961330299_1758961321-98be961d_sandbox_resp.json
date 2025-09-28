@@ -1,0 +1,15 @@
+{
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 132, in <module>\n  File \"/opt/conda/envs/app/lib/python3.11/site-packages/graphviz/_tools.py\", line 185, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/envs/app/lib/python3.11/site-packages/graphviz/rendering.py\", line 129, in render\n    self._view(rendered, format=self._format, quiet=quiet_view)\n  File \"/opt/conda/envs/app/lib/python3.11/site-packages/graphviz/rendering.py\", line 148, in _view\n    view_method(filepath, quiet=quiet)\n  File \"/opt/conda/envs/app/lib/python3.11/site-packages/graphviz/backend/viewing.py\", line 61, in view_unixoid\n    subprocess.Popen(cmd, **kwargs)\n  File \"/opt/conda/envs/app/lib/python3.11/subprocess.py\", line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/opt/conda/envs/app/lib/python3.11/subprocess.py\", line 1955, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'xdg-open'\n",
+  "returncode": 1,
+  "images": [
+    {
+      "filename": "20250927-082209-5716c5/usda_organizational_structure.gv.pdf",
+      "content_type": "application/pdf"
+    },
+    {
+      "filename": "20250927-082209-5716c5/usda_organizational_structure.png",
+      "content_type": "image/png"
+    }
+  ]
+}

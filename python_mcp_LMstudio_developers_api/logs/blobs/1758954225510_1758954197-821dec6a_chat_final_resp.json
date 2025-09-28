@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-aljrs48t8ttkduz9vrkj3",
+  "object": "chat.completion",
+  "created": 1758954221,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I've created a more visually appealing version of the USDA organizational structure graph with enhanced styling. Here's the improved visualization:\n\n![](http://192.168.1.133:18080/20250927-062340-66fe46/usda_organization_enhanced.png)\n\nThe enhanced graph features:\n\n1. **Color-coded nodes**:\n   - USDA is highlighted in light coral (making it stand out as the main entity)\n   - All other agencies are shown in light blue\n\n2. **Improved typography**:\n   - Consistent Arial font throughout\n   - Better readable font sizes\n\n3. **Enhanced layout**:\n   - Increased spacing between nodes and ranks for better clarity\n   - Rounded corners for the USDA node to make it more prominent\n\n4. **Stylized edges**:\n   - Dark blue colored connections\n   - Slightly smaller arrowheads for cleaner appearance\n\n5. **Better overall structure**:\n   - Clear left-to-right flow with USDA on the far left\n   - All 16 agencies properly connected with \"operates\" labels\n\nThe visualization maintains the requested layout where USDA is positioned on the left and all other nodes are arranged to its right, while providing a much more professional and visually appealing presentation.\n<tool_call>",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 3806,
+    "completion_tokens": 276,
+    "total_tokens": 4082
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "chatcmpl-09q9gtppl8gm66ow6etkhqi",
+  "object": "chat.completion",
+  "created": 1758953672,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I'll create a Graphviz visualization for this directed graph structure with the specified requirements.\n\nLet me break down what I need to do:\n1. Parse the JSON data containing nodes and edges\n2. Create DOT code that represents this directed graph\n3. Position USDA on the left and other nodes on the right\n4. Include edge labels showing relationships\n5. Generate an HD PNG visualization\n\n",
+        "tool_calls": [
+          {
+            "type": "function",
+            "id": "145484809",
+            "function": {
+              "name": "python_sandbox_execute",
+              "arguments": "{\"code\":\"import json\\nfrom graphviz import Graph\\n\\n# JSON data provided by user\\njson_data = {\\n    \\\"directed_graph\\\": {\\n        \\\"nodes\\\": [\\n            {\\\"id\\\": \\\"USDA\\\", \\\"label\\\": \\\"United States Department of Agriculture\\\"},\\n            {\\\"id\\\": \\\"AMS\\\", \\\"label\\\": \\\"Agricultural Marketing Service\\\"},\\n            {\\\"id\\\": \\\"FNS\\\", \\\"label\\\": \\\"Food and Nutrition Service\\\"},\\n            {\\\"id\\\": \\\"APHIS\\\", \\\"label\\\": \\\"Animal and Plant Health Inspection Service\\\"},\\n            {\\\"id\\\": \\\"FSIS\\\", \\\"label\\\": \\\"Food Safety and Inspection Service\\\"},\\n            {\\\"id\\\": \\\"ARS\\\", \\\"label\\\": \\\"Agricultural Research Service\\\"},\\n            {\\\"id\\\": \\\"NASS\\\", \\\"label\\\": \\\"National Agricultural Statistics Service\\\"},\\n            {\\\"id\\\": \\\"FAS\\\", \\\"label\\\": \\\"Foreign Agricultural Service\\\"},\\n            {\\\"id\\\": \\\"RDA\\\", \\\"label\\\": \\\"Rural Development Administration\\\"},\\n            {\\\"id\\\": \\\"FSA\\\", \\\"label\\\": \\\"Farm Service Agency\\\"},\\n            {\\\"id\\\": \\\"NRCS\\\", \\\"label\\\": \\\"Natural Resources Conservation Service\\\"},\\n            {\\\"id\\\": \\\"CCS\\\", \\\"label\\\": \\\"Commodity Credit Corporation\\\"},\\n            {\\\"id\\\": \\\"GIPSA\\\", \\\"label\\\": \\\"Grain Inspection, Packers and Stockyards Administration\\\"},\\n            {\\\"id\\\": \\\"RUS\\\", \\\"label\\\": \\\"Rural Utilities Service\\\"},\\n            {\\\"id\\\": \\\"OS\\\", \\\"label\\\": \\\"Office of the Secretary\\\"},\\n            {\\\"id\\\": \\\"OCE\\\", \\\"label\\\": \\\"Office of the Chief Economist\\\"}\\n        ],\\n        \\\"edges\\\": [\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"AMS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"FNS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"APHIS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"FSIS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"ARS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"NASS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"FAS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"RDA\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"FSA\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"NRCS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"CCS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"GIPSA\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"RUS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"OS\\\", \\\"relationship\\\": \\\"operates\\\"},\\n            {\\\"source\\\": \\\"USDA\\\", \\\"target\\\": \\\"OCE\\\", \\\"relationship\\\": \\\"operates\\\"}\\n        ]\\n    }\\n}\\n\\n# Create a directed graph\\ndot = Graph(comment='USDA Organization Structure', direction='LR')\\n\\n# Add nodes with their labels\\nfor node in json_data['directed_graph']['nodes']:\\n    dot.node(node['id'], node['label'])\\n\\n# Add edges with relationship labels\\nfor edge in json_data['directed_graph']['edges']:\\n    dot.edge(edge['source'], edge['target'], label=edge['relationship'])\\n\\n# Render the graph to PNG\\ndot.render('usda_organization', format='png', cleanup=True)\\n\\nprint(\\\"Graphviz visualization created successfully!\\\")\"}"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1793,
+    "completion_tokens": 868,
+    "total_tokens": 2661
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

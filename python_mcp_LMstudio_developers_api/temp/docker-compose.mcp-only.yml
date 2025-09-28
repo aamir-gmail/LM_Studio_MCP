@@ -1,0 +1,33 @@
+services:
+  # Plain HTTP server to expose generated artifacts as external links
+  artifacts:
+    image: python:3.11-slim
+    container_name: artifacts_http_mcp_only
+    command: python -m http.server 18080 --directory /srv
+    working_dir: /srv
+    ports:
+      - "18081:18080"   # host:container  (use 18081 on host to avoid your in-use 18080)
+    volumes:
+      - sandbox_artifacts:/srv
+    restart: unless-stopped
+
+  # MCP REST server (your existing image, no build)
+  mcp:
+    image: python-sandbox-integrated_v2:latest
+    container_name: mcp_server_only
+    environment:
+      PUBLIC_BASE_URL: "http://192.168.1.133:18081"  # matches the host port above
+      PUBLIC_BASE_URL_MODE: "plain"
+    command: ["python", "/app/mcp_server.py"]        # no --stdio for REST mode
+    ports:
+      - "8000:8000"                                   # expose MCP REST
+    volumes:
+      - sandbox_artifacts:/app/temp                   # shared with artifacts server
+    restart: unless-stopped
+    depends_on:
+      - artifacts
+
+volumes:
+  sandbox_artifacts:
+    driver: local
+

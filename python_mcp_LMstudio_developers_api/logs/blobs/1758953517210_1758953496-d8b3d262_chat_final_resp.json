@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-m2yy5qwrw3s1anwg6ap9",
+  "object": "chat.completion",
+  "created": 1758953506,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I need to fix the Graphviz code. The error indicates that I'm using a deprecated parameter for directed graphs. Let me correct this and create a proper solution.\n\nLooking at my previous attempt, the issue is with how I'm initializing the Graph object. In newer versions of graphviz, we should use `Digraph` instead of passing `directed=True` to `Graph`.\n\nLet me fix this:\n<tool_call>\n<function=python_sandbox_execute>\n<parameter=code>\nimport json\nfrom graphviz import Digraph\n\n# Define the JSON data\ndata = {\n    \"directed_graph\": {\n        \"nodes\": [\n            {\"id\": \"USDA\", \"label\": \"United States Department of Agriculture\"},\n            {\"id\": \"AMS\", \"label\": \"Agricultural Marketing Service\"},\n            {\"id\": \"FNS\", \"label\": \"Food and Nutrition Service\"},\n            {\"id\": \"APHIS\", \"label\": \"Animal and Plant Health Inspection Service\"},\n            {\"id\": \"FSIS\", \"label\": \"Food Safety and Inspection Service\"},\n            {\"id\": \"ARS\", \"label\": \"Agricultural Research Service\"},\n            {\"id\": \"NASS\", \"label\": \"National Agricultural Statistics Service\"},\n            {\"id\": \"FAS\", \"label\": \"Foreign Agricultural Service\"},\n            {\"id\": \"RDA\", \"label\": \"Rural Development Administration\"},\n            {\"id\": \"FSA\", \"label\": \"Farm Service Agency\"},\n            {\"id\": \"NRCS\", \"label\": \"Natural Resources Conservation Service\"},\n            {\"id\": \"CCS\", \"label\": \"Commodity Credit Corporation\"},\n            {\"id\": \"GIPSA\", \"label\": \"Grain Inspection, Packers and Stockyards Administration\"},\n            {\"id\": \"RUS\", \"label\": \"Rural Utilities Service\"},\n            {\"id\": \"OS\", \"label\": \"Office of the Secretary\"},\n            {\"id\": \"OCE\", \"label\": \"Office of the Chief Economist\"}\n        ],\n        \"edges\": [\n            {\"source\": \"USDA\", \"target\": \"AMS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"FNS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"APHIS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"FSIS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"ARS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"NASS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"FAS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"RDA\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"FSA\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"NRCS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"CCS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"GIPSA\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"RUS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"OS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"OCE\", \"relationship\": \"operates\"}\n        ]\n    }\n}\n\n# Create the directed graph\ndot = Digraph(comment='USDA Organization Chart')\n\n# Set graph attributes for better visualization\ndot.attr(rankdir='LR')  # Left to right layout (USDA on left, others on right)\ndot.attr(splines='curved')\ndot.attr(fontsize='12')\ndot.attr(bgcolor='white')\n\n# Add nodes\nfor node in data['directed_graph']['nodes']:\n    dot.node(node['id'], node['label'])\n\n# Add edges with relationship labels\nfor edge in data['directed_graph']['edges']:\n    dot.edge(edge['source'], edge['target'], label=edge['relationship'])\n\n# Render the graph to PNG\ndot.render('usda_organization', format='png', cleanup=True)\n\nprint(\"Graphviz visualization saved as 'usda_organization.png'\")\n</parameter>\n</function>\n</tool_call>",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 2399,
+    "completion_tokens": 922,
+    "total_tokens": 3321
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

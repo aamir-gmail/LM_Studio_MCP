@@ -1,0 +1,34 @@
+{
+  "id": "chatcmpl-89olayw3bt4y160ekzu9ln",
+  "object": "chat.completion",
+  "created": 1758961415,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I'll create a visually appealing Graphviz graph to model the USDA organizational relationships from the provided JSON data.\n\nLet me break this down step by step:\n\n1. First, I need to understand the structure - USDA has multiple categories (Research_Statistics_Analysis, Food_Safety_Nutrition, etc.) and each category contains sub-organizations\n2. I'll create a hierarchical graph where USDA is the root node\n3. Each main category will be connected to its sub-organizations\n4. I'll make it visually appealing with colors, shapes, and proper layout\n\nLet me execute this plan:\n",
+        "tool_calls": [
+          {
+            "type": "function",
+            "id": "426756312",
+            "function": {
+              "name": "python_sandbox_execute",
+              "arguments": "{\"code\":\"import json\\nfrom graphviz import Graph\\n\\n# JSON data\\ndata = {\\n\\\"USDA\\\": {\\n\\\"Research_Statistics_Analysis\\\": [\\n\\\"Agricultural Research Service\\\",\\n\\\"Economic Research Service\\\",\\n\\\"National Agricultural Statistics Service\\\",\\n\\\"National Institute of Food and Agriculture\\\",\\n\\\"National Agricultural Library\\\",\\n\\\"World Agricultural Outlook Board\\\"\\n],\\n\\\"Food_Safety_Nutrition\\\": [\\n\\\"Food and Nutrition Service\\\",\\n\\\"Food Safety and Inspection Service\\\"\\n],\\n\\\"Marketing_Trade\\\": [\\n\\\"Agricultural Marketing Service\\\",\\n\\\"Foreign Agricultural Service\\\",\\n\\\"Commodity Credit Corporation\\\"\\n],\\n\\\"Farming_Risk_Management\\\": [\\n\\\"Farm Service Agency\\\",\\n\\\"Federal Crop Insurance Corporation\\\"\\n],\\n\\\"Animal_Plant_Health\\\": [\\n\\\"Animal and Plant Health Inspection Service\\\"\\n],\\n\\\"Forests_Conservation\\\": [\\n\\\"Forest Service\\\",\\n\\\"Natural Resources Conservation Service\\\"\\n],\\n\\\"Rural_Development\\\": [\\n\\\"Rural Business-Cooperative Service\\\",\\n\\\"Rural Development Administration\\\",\\n\\\"Rural Housing Service\\\",\\n\\\"Rural Utilities Service\\\"\\n],\\n\\\"Support_Offices\\\": [\\n\\\"Office of the Secretary of Agriculture\\\",\\n\\\"Office of Advocacy and Outreach\\\",\\n\\\"Office of the Chief Financial Officer\\\",\\n\\\"Office of Energy and Environmental Policy\\\",\\n\\\"Office of Energy Policy and New Uses\\\",\\n\\\"Office of Environmental Quality\\\",\\n\\\"Office of Information Resources Management\\\",\\n\\\"Office of Inspector General\\\",\\n\\\"Office of Operations\\\",\\n\\\"Office of Procurement and Property Management\\\",\\n\\\"Office of Transportation\\\"\\n]\\n}\\n}\\n\\n# Create Graphviz graph\\ndot = Graph(comment='USDA Organizational Structure', engine='dot')\\n\\n# Set global attributes for better appearance\\ndot.attr(rankdir='TB')  # Top to bottom layout\\ndot.attr('node', shape='box', style='filled', fillcolor='lightblue')\\ndot.attr('edge', color='black')\\n\\n# Add root node (USDA)\\ndot.node('USDA', 'United States Department of Agriculture', fontsize='16', fontweight='bold')\\n\\n# Create categories and their nodes\\ncategories = list(data['USDA'].keys())\\ncolors = ['lightcoral', 'lightgreen', 'lightyellow', 'lightpink', \\n          'lightcyan', 'lightgray', 'lightgoldenrod', 'lightseagreen']\\n\\nfor i, category in enumerate(categories):\\n    # Add category node\\n    dot.node(category, category.replace('_', ' '), fillcolor=colors[i % len(colors)], fontsize='12')\\n    \\n    # Connect category to USDA\\n    dot.edge('USDA', category)\\n    \\n    # Add sub-nodes for each organization in the category\\n    for org in data['USDA'][category]:\\n        dot.node(org, org, shape='ellipse', fillcolor='white', fontsize='10')\\n        dot.edge(category, org)\\n\\n# Render and save graph\\ndot.render('usda_organizational_structure', format='png', cleanup=True)\\nprint(\\\"Graph created successfully as usda_organizational_structure.png\\\")\"}"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1222,
+    "completion_tokens": 739,
+    "total_tokens": 1961
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

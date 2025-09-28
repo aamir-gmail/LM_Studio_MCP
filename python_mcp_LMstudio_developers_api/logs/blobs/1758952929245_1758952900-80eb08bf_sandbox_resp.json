@@ -1,0 +1,15 @@
+{
+  "stdout": "Dataset Info:\nShape: (1000, 6)\n\nFirst 5 rows:\n   Feature_1  Feature_2  Feature_3  Feature_4  Feature_5    target\n0   0.496714  -0.138264   0.647689   1.523030  -0.234153  0.133322\n1  -0.234137   1.579213   0.767435  -0.469474   0.542560  2.711024\n2  -0.463418  -0.465730   0.241962  -1.913280  -1.724918 -4.713922\n3  -0.562288  -1.012831   0.314247  -0.908024  -1.412304 -5.394727\n4   1.465649  -0.225776   0.067528  -1.424748  -0.544383  1.752279\n\nModel Performance:\nR² Score: 0.955\nMean Squared Error: 0.786\nMean Absolute Error: 0.664\n\nFeature Importance:\nFeature_2: 0.6385\nFeature_1: 0.1816\nFeature_3: 0.1560\nFeature_4: 0.0185\nFeature_5: 0.0055\n\nAnalysis Complete!\n",
+  "stderr": "",
+  "returncode": 0,
+  "images": [
+    {
+      "filename": "20250927-060155-77cc63/figure_1.png",
+      "content_type": "image/png"
+    },
+    {
+      "filename": "20250927-060155-77cc63/xgboost_regression_analysis.png",
+      "content_type": "image/png"
+    }
+  ]
+}

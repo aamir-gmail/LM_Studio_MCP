@@ -1,0 +1,11 @@
+{
+  "stdout": "Graphviz visualization created successfully!\nFile saved as usda_organization.png\n",
+  "stderr": "",
+  "returncode": 0,
+  "images": [
+    {
+      "filename": "20250927-061544-bd9753/usda_organization.png",
+      "content_type": "image/png"
+    }
+  ]
+}

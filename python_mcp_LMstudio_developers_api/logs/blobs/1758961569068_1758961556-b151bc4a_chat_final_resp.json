@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-xcbo554dqyrcqd7796b5m5",
+  "object": "chat.completion",
+  "created": 1758961565,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I've successfully created a Graphviz PNG graph with proper node connections for the USDA organizational structure. The visualization now features:\n\n**Key Improvements:**\n- **Proper Connections**: All nodes are correctly connected to show relationships\n- **Left-to-Right Layout**: USDA positioned on the left, all other elements to the right\n- **Clear Hierarchy**: Central USDA node connects to each category cluster\n- **Visual Grouping**: Each category is clearly grouped with its respective agencies\n- **Color Coding**: Different colors for each functional area of USDA\n\n**Structure:**\n1. **Central Node**: \"United States Department of Agriculture\" on the far left\n2. **Category Clusters**: 8 distinct colored clusters representing different USDA divisions\n3. **Agency Nodes**: Individual agencies within each category cluster\n4. **Connections**: Clear lines showing how each agency relates to its parent category and USDA\n\nThe graph is now properly formatted with all connections visible, making it easy to understand the complete organizational structure of the United States Department of Agriculture.\n\n```\n[20250927-082604-15b5cb/usda_organizational_structure.png](http://192.168.1.133:18080/20250927-082604-15b5cb/usda_organizational_structure.png)\n```",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 2515,
+    "completion_tokens": 295,
+    "total_tokens": 2810
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

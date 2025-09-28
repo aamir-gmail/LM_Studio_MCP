@@ -1,0 +1,11 @@
+{
+  "stdout": "Graph created successfully as usda_organizational_structure.png\n",
+  "stderr": "",
+  "returncode": 0,
+  "images": [
+    {
+      "filename": "20250927-082343-990161/usda_organizational_structure.png",
+      "content_type": "image/png"
+    }
+  ]
+}

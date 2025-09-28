@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-hivtnxm3kjt685x0ouj2",
+  "object": "chat.completion",
+  "created": 1758953538,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I need to provide the final complete solution that generates the Graphviz DOT code for the USDA organization chart.\n\nLooking at my previous attempts, I've successfully created the DOT code representation of the directed graph. Let me finalize this by providing the complete working solution:\n\n```python\nimport json\n\n# Define the JSON data\ndata = {\n    \"directed_graph\": {\n        \"nodes\": [\n            {\"id\": \"USDA\", \"label\": \"United States Department of Agriculture\"},\n            {\"id\": \"AMS\", \"label\": \"Agricultural Marketing Service\"},\n            {\"id\": \"FNS\", \"label\": \"Food and Nutrition Service\"},\n            {\"id\": \"APHIS\", \"label\": \"Animal and Plant Health Inspection Service\"},\n            {\"id\": \"FSIS\", \"label\": \"Food Safety and Inspection Service\"},\n            {\"id\": \"ARS\", \"label\": \"Agricultural Research Service\"},\n            {\"id\": \"NASS\", \"label\": \"National Agricultural Statistics Service\"},\n            {\"id\": \"FAS\", \"label\": \"Foreign Agricultural Service\"},\n            {\"id\": \"RDA\", \"label\": \"Rural Development Administration\"},\n            {\"id\": \"FSA\", \"label\": \"Farm Service Agency\"},\n            {\"id\": \"NRCS\", \"label\": \"Natural Resources Conservation Service\"},\n            {\"id\": \"CCS\", \"label\": \"Commodity Credit Corporation\"},\n            {\"id\": \"GIPSA\", \"label\": \"Grain Inspection, Packers and Stockyards Administration\"},\n            {\"id\": \"RUS\", \"label\": \"Rural Utilities Service\"},\n            {\"id\": \"OS\", \"label\": \"Office of the Secretary\"},\n            {\"id\": \"OCE\", \"label\": \"Office of the Chief Economist\"}\n        ],\n        \"edges\": [\n            {\"source\": \"USDA\", \"target\": \"AMS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"FNS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"APHIS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"FSIS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"ARS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"NASS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"FAS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"RDA\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"FSA\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"NRCS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"CCS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"GIPSA\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"RUS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"OS\", \"relationship\": \"operates\"},\n            {\"source\": \"USDA\", \"target\": \"OCE\", \"relationship\": \"operates\"}\n        ]\n    }\n}\n\n# Generate DOT code\ndot_code = \"\"\"digraph USDA_Organization {\n    rankdir=LR;\n    splines=curved;\n    fontsize=12;\n    \n    // Node definitions\n\"\"\"\n\nfor node in data['directed_graph']['nodes']:\n    dot_code += f'    \"{node[\"id\"]}\" [label=\"{node[\"label\"]}\"];\\n'\n\ndot_code += \"\\n    // Edge definitions\\n\"\n\nfor edge in data['directed_graph']['edges']:\n    dot_code += f'    \"{edge[\"source\"]}\" -> \"{edge[\"target\"]}\" [label=\"{edge[\"relationship\"]}\"];\\n'\n\ndot_code += \"}\\n\"\n\n# Write to file\nwith open('usda_organization.dot', 'w') as f:\n    f.write(dot_code)\n\nprint(\"DOT code generated and saved to usda_organization.dot\")\nprint(\"\\nGenerated DOT code:\")\nprint(dot_code)\n```",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 7846,
+    "completion_tokens": 884,
+    "total_tokens": 8730
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

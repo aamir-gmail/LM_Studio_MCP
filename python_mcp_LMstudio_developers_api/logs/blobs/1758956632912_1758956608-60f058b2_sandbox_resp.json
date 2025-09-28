@@ -1,0 +1,6 @@
+{
+  "stdout": "Error in JSON parsing: Invalid \\escape: line 1 column 3 (char 2)\nError creating graph: name 'parsed_data' is not defined\n",
+  "stderr": "",
+  "returncode": 0,
+  "images": []
+}

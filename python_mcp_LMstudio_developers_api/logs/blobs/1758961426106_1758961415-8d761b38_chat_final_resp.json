@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-t4jb5gvj148uhoodkc9f8",
+  "object": "chat.completion",
+  "created": 1758961423,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I've successfully created a visually appealing Graphviz PNG graph representing the USDA organizational structure based on your JSON data.\n\nThe graph features:\n- A central \"United States Department of Agriculture\" node\n- 8 distinct categories with color-coded headers\n- Sub-nodes for each specific agency/service within those categories\n- Clear hierarchical relationships showing how each agency belongs to its respective category\n- Professional styling with different shapes and colors for better visual distinction\n\nThe visualization shows the complete organizational structure with:\n1. Research & Statistics Analysis\n2. Food Safety & Nutrition\n3. Marketing & Trade\n4. Farming & Risk Management\n5. Animal & Plant Health\n6. Forests & Conservation\n7. Rural Development\n8. Support Offices\n\nEach category is color-coded for easy identification, and the hierarchical structure makes it simple to understand how the various agencies relate to the main USDA department.\n\n```\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1692,
+    "completion_tokens": 181,
+    "total_tokens": 1873
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

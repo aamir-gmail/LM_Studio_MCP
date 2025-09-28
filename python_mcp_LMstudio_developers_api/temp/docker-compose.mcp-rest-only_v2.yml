@@ -1,0 +1,40 @@
+services:
+  artifacts:
+    image: python:3.11-slim
+    container_name: artifacts_http_mcp_only
+    command: python -m http.server 18080 --directory /srv
+    working_dir: /srv
+    ports:
+      - "18081:18080"   # host:container (avoid your in-use 18080)
+    volumes:
+      - sandbox_artifacts:/srv
+    restart: unless-stopped
+    networks: [mcpnet]
+
+  mcp:
+    image: python-sandbox-integrated_v2:latest
+    container_name: mcp_server_only
+    environment:
+      PUBLIC_BASE_URL: "http://192.168.1.133:18081"   # matches artifacts host port above
+      PUBLIC_BASE_URL_MODE: "plain"
+    # IMPORTANT: run ONLY the REST app (no stdio)
+    command: ["uvicorn", "mcp_server:rest_app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "info"]
+    # If `uvicorn` CLI is not found in PATH, use:
+    # command: ["python", "-m", "uvicorn", "mcp_server:rest_app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "info"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - sandbox_artifacts:/app/temp
+    restart: unless-stopped
+    depends_on: [artifacts]
+    networks: [mcpnet]
+
+volumes:
+  sandbox_artifacts:
+    driver: local
+
+networks:
+  mcpnet:
+    name: mcpnet
+    driver: bridge
+

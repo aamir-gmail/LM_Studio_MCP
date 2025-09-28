@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-7oesfq6mzslj77pvd6xc4",
+  "object": "chat.completion",
+  "created": 1758953413,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I'll enhance the visualization by improving node styling, adding colors, adjusting layout, and making the overall appearance more professional. Let me create an improved version.\n\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 2118,
+    "completion_tokens": 1024,
+    "total_tokens": 3142
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

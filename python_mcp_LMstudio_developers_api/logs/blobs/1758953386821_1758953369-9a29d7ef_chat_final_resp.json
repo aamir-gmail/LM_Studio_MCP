@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-xutic7p3nn9yuu7kt315",
+  "object": "chat.completion",
+  "created": 1758953379,
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I've successfully created a Graphviz visualization of the USDA organizational structure based on your JSON data.\n\nThe solution:\n1. Parsed the JSON input containing nodes and edges\n2. Created a directed graph with left-to-right layout (USDA on the left, other agencies on the right)\n3. Added all 16 nodes with their full labels\n4. Connected them with edges showing \"operates\" relationships\n5. Generated an HD PNG visualization\n\nThe resulting image shows USDA at the left with all its operating units arranged to the right, clearly visualizing the organizational hierarchy. Each connection is labeled with \"operates\" as specified.\n\nHere's the Graphviz DOT code that was generated:\n\n```\n// USDA Organization Structure\ndigraph {\n\trankdir=LR\n\tUSDA [label=\"United States Department of Agriculture\"]\n\tAMS [label=\"Agricultural Marketing Service\"]\n\tFNS [label=\"Food and Nutrition Service\"]\n\tAPHIS [label=\"Animal and Plant Health Inspection Service\"]\n\tFSIS [label=\"Food Safety and Inspection Service\"]\n\tARS [label=\"Agricultural Research Service\"]\n\tNASS [label=\"National Agricultural Statistics Service\"]\n\tFAS [label=\"Foreign Agricultural Service\"]\n\tRDA [label=\"Rural Development Administration\"]\n\tFSA [label=\"Farm Service Agency\"]\n\tNRCS [label=\"Natural Resources Conservation Service\"]\n\tCCS [label=\"Commodity Credit Corporation\"]\n\tGIPSA [label=\"Grain Inspection, Packers and Stockyards Administration\"]\n\tRUS [label=\"Rural Utilities Service\"]\n\tOS [label=\"Office of the Secretary\"]\n\tOCE [label=\"Office of the Chief Economist\"]\n\tUSDA -> AMS [label=operates]\n\tUSDA -> FNS [label=operates]\n\tUSDA -> APHIS [label=operates]\n\tUSDA -> FSIS [label=operates]\n\tUSDA -> ARS [label=operates]\n\tUSDA -> NASS [label=operates]\n\tUSDA -> FAS [label=operates]\n\tUSDA -> RDA [label=operates]\n\tUSDA -> FSA [label=operates]\n\tUSDA -> NRCS [label=operates]\n\tUSDA -> CCS [label=operates]\n\tUSDA -> GIPSA [label=operates]\n\tUSDA -> RUS [label=operates]\n\tUSDA -> OS [label=operates]\n\tUSDA -> OCE [label=operates]\n}\n```\n\nThe visualization clearly shows how the United States Department of Agriculture operates all the listed agencies and services.\n\n![USDA Organization Structure](http://192.168.1.133:18080/20250927-060939-58dbda/usda_organization.png)",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 2873,
+    "completion_tokens": 586,
+    "total_tokens": 3459
+  },
+  "stats": {},
+  "system_fingerprint": "qwen.qwen3-coder-30b-a3b-instruct"
+}

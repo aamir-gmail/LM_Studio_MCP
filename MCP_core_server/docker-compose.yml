@@ -1,0 +1,8 @@
+services:
+  artifacts:
+    container_name: artifacts-http
+    image: python:3.11-alpine
+    command: python -m http.server 80 --directory /srv
+    ports: ["18080:80"]
+    volumes: ["/4tbstorage/python_sandbox/artifacts:/srv:ro"]
+    restart: unless-stopped

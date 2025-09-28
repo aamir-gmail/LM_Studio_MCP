@@ -1,0 +1,85 @@
+# docker-compose.external_v3.yml
+services:
+  artifacts:
+    image: python:3.11-slim
+    container_name: artifacts_http_ext
+    network_mode: host
+    working_dir: /srv
+    command: sh -lc "python -m http.server ${ARTIFACTS_PORT} --directory /srv"
+    volumes:
+      - sandbox_artifacts:/srv
+    restart: unless-stopped
+    # Optional: make artifacts visibly 'healthy'
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:${ARTIFACTS_PORT}/ || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  mcp:
+    image: python-sandbox-integrated_v2:latest
+    container_name: mcp_server_ext
+    network_mode: host
+    environment:
+      PUBLIC_BASE_URL: "http://${HOST_BASE_IP}:${ARTIFACTS_PORT}"
+      PUBLIC_BASE_URL_MODE: "plain"
+      # Optional clarity (default is /app/temp)
+      SANDBOX_TEMP_DIR: "/app/temp"
+    command: ["python", "-m", "uvicorn", "server_rest:app", "--host", "0.0.0.0", "--port", "${MCP_PORT}", "--log-level", "info"]
+    volumes:
+      - sandbox_artifacts:/app/temp
+      - /4tbstorage/python_sandbox/mcp-integrated-LMStudio/logs:/app/logs
+    restart: unless-stopped
+    depends_on:
+      - artifacts
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:${MCP_PORT}/health || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  ui:
+    build:
+      context: .
+      dockerfile: ui.Dockerfile
+    image: mcp-lmstudio-ui:latest
+    container_name: mcp_lmstudio_ui_ext
+    network_mode: host
+    environment:
+      LMSTUDIO_BASE_URL: "http://${HOST_BASE_IP}:${LMSTUDIO_API_PORT}"
+      SANDBOX_BASE_URL: "http://${HOST_BASE_IP}:${MCP_PORT}"
+      MODEL_NAME: "qwen.qwen3-coder-30b-a3b-instruct"
+      GRADIO_SERVER_NAME: "0.0.0.0"
+      GRADIO_SERVER_PORT: "${UI_PORT}"
+      ARTIFACTS_DIR: "/app/artifacts"
+      ARTIFACTS_EXTERNAL_BASE: "http://${HOST_BASE_IP}:${ARTIFACTS_PORT}"
+
+      # UI logging + tracing
+      UI_LOG_ENABLED: "1"
+      UI_LOG_LEVEL: "DEBUG"
+      UI_LOG_FORMAT: "json"
+      UI_LOG_DIR: "/app/logs"
+      UI_TRACE_VERBOSE: "1"
+      UI_TRACE_MAXLEN: "4000"
+      UI_TRACE_SAVE_BLOBS: "1"      # <— enable payload blob dumps
+      UI_TRACE_INCLUDE_CODE: "1"    # <— include tool code text in logs
+    volumes:
+      - sandbox_artifacts:/app/artifacts
+      - /4tbstorage/python_sandbox/mcp-integrated-LMStudio/logs:/app/logs
+    restart: unless-stopped
+    depends_on:
+      mcp:
+        condition: service_healthy
+      artifacts:
+        condition: service_started
+    # New: UI healthcheck for quick status signal
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:${UI_PORT}/ || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+volumes:
+  sandbox_artifacts:
+    driver: local
+
