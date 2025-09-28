@@ -11,7 +11,7 @@
         "-e", "PUBLIC_BASE_URL",
         "-e", "PUBLIC_BASE_URL_PLAIN",    // tell MCP to emit plain URLs
         "-e", "REST_PORT",
-        "-v", "/4tbstorage/python_sandbox/artifacts:/app/temp", // replace with with you own local path.
+        "-v", "~/python_sandbox/artifacts:/app/temp", // replace with with you own local path.
         "python-sandbox-integrated_v2:latest",
         "python",
         "/app/mcp_server.py",
