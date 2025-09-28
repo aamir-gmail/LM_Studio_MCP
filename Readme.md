@@ -68,5 +68,6 @@ Finally, some troubleshooting tips.
 4. Are you setting up environmental variable like IP adders of your machine properly.
 5. Allow exceptions for all ports used, if you are using some kind of firewall.
 6. Edit .env file properly.
+7. Edit "docker-compose.external_v3.yml" to have local volumes mounted properly.
 
 

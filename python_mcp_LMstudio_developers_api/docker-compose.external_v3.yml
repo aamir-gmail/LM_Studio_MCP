@@ -28,7 +28,7 @@ services:
     command: ["python", "-m", "uvicorn", "server_rest:app", "--host", "0.0.0.0", "--port", "${MCP_PORT}", "--log-level", "info"]
     volumes:
       - sandbox_artifacts:/app/temp
-      - /4tbstorage/python_sandbox/mcp-integrated-LMStudio/logs:/app/logs
+      - ~/python_mcp_LMstudio_developers_api/logs:/app/logs
     restart: unless-stopped
     depends_on:
       - artifacts
@@ -65,7 +65,7 @@ services:
       UI_TRACE_INCLUDE_CODE: "1"    # <— include tool code text in logs
     volumes:
       - sandbox_artifacts:/app/artifacts
-      - /4tbstorage/python_sandbox/mcp-integrated-LMStudio/logs:/app/logs
+      - ~/python_mcp_LMstudio_developers_api/logs:/app/logs
     restart: unless-stopped
     depends_on:
       mcp:
