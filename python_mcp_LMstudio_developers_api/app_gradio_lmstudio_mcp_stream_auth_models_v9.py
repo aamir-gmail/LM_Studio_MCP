@@ -16,10 +16,13 @@ from sys_prompt import SYSTEM_PROMPT
 
 # -------------------- Config --------------------
 # Important to replace with  your local IP address where LM studio is running
+# for example mine is running at this local address, http://10.11.11.123:1234 at
+# the firewall allows connection
 
-LMSTUDIO_BASE_URL = os.getenv("LMSTUDIO_BASE_URL", "http://192.168.1.133:1234")
+LMSTUDIO_BASE_URL = os.getenv("LMSTUDIO_BASE_URL", "http://10.11.11.123:1234")
 MODEL_NAME = os.getenv("MODEL_NAME", "qwen.qwen3-coder-30b-a3b-instruct")
-SANDBOX_BASE_URL = os.getenv("SANDBOX_BASE_URL", "http://192.168.1.133:8000")
+# Replace this with local ip address where you mcp server is running
+SANDBOX_BASE_URL = os.getenv("SANDBOX_BASE_URL", "http://10.11.11.123:8000")
 ARTIFACTS_DIR = Path(os.getenv("ARTIFACTS_DIR", "/app/artifacts")).resolve()
 ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 
