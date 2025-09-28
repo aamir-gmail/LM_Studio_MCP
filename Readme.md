@@ -67,5 +67,6 @@ Finally, some troubleshooting tips.
 3. Are you mounting the local volumes to docker properly.
 4. Are you setting up environmental variable like IP adders of your machine properly.
 5. Allow exceptions for all ports used, if you are using some kind of firewall.
+6. Edir .env file properly.
 
 
