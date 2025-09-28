@@ -1,0 +1,1 @@
+Generate some sample data and perform xgboost regression , display all the chart and results as png image.

@@ -69,5 +69,9 @@ Finally, some troubleshooting tips.
 5. Allow exceptions for all ports used, if you are using some kind of firewall.
 6. Edit .env file properly.
 7. Edit "docker-compose.external_v3.yml" to have local volumes mounted properly.
+8. When running the sandbox in local LM chat or Gradio interface  if you get a URL like this.
+"![XGBoost Complete Analysis](http://192.168.30.40:18080/20250928-054232-c42fbb/xgboost_complete_analysis.png)"
+ Simply copy and the URL part to you browser, This is not a bug. 
+
 
 
