@@ -15,7 +15,7 @@ The full stack includes three main components:
 This project is designed to work with Linux ecosystem, I am using Ubuntu 22.04 LTS,
 I have not tested in on windows, or windows docker.
 
-It is important that you read through these instructions properly to get to a successful outcome.
+**It is important that you read through these instructions properly to get to a successful outcome.**
 
 You would require some familiarity with editing python, docker code and LM studio.
 
@@ -62,7 +62,7 @@ so the concentration would be to get the Gradio working.
 7. Now we need to check that each component is working properly.
 8. Execute this command "docker logs mcp_lmstudio_ui_ext --tail 120". You should see UI listening of set interface.
 
-Finally, some troubleshooting tips.
+**Finally, some troubleshooting tips.**
 
 1. I have tested this extensively on LM local chat as well as Gradio Interface. 
 2. If you run into any issues , please check the following.
