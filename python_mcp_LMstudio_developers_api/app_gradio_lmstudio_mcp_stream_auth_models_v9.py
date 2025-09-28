@@ -15,6 +15,8 @@ from ui_logging import configure_logging, make_rid
 from sys_prompt import SYSTEM_PROMPT
 
 # -------------------- Config --------------------
+# Important to replace with  your local IP address where LM studio is running
+
 LMSTUDIO_BASE_URL = os.getenv("LMSTUDIO_BASE_URL", "http://192.168.1.133:1234")
 MODEL_NAME = os.getenv("MODEL_NAME", "qwen.qwen3-coder-30b-a3b-instruct")
 SANDBOX_BASE_URL = os.getenv("SANDBOX_BASE_URL", "http://192.168.1.133:8000")
