@@ -1,6 +1,0 @@
-{
-  "stdout": "",
-  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 86, in <module>\n  File \"/opt/conda/envs/app/lib/python3.11/site-packages/graphviz/_tools.py\", line 185, in wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\nTypeError: BaseGraph.__init__() got an unexpected keyword argument 'direction'\n",
-  "returncode": 1,
-  "images": []
-}
