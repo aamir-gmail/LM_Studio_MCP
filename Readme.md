@@ -15,6 +15,8 @@ The full stack includes three main components:
 This project is designed to work with Linux ecosystem, I am using Ubuntu 22.04 LTS,
 I have not tested in on windows, or windows docker.
 
+It is important that you read through these instructions properly to get to a successful outcome.
+
 You would require some familiarity with editing python, docker code and LM studio.
 
 To get started first clone the repo and the starts with building the docker image of
