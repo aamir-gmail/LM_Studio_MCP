@@ -15,11 +15,15 @@ The full stack includes three main components:
 This project is designed to work with Linux ecosystem, I am using Ubuntu 22.04 LTS,
 I have not tested in on windows, or windows docker.
 
+You would require some familiarity with editing python and docker code.
+
 To get started first clone the repo and the starts with building the docker image of
 core MCP server. Docker file is locate under "MCP_core_server"
 
-Command on Terminal "docker build -t python-sandbox-integrated:latest"
-If the build is successful  you can test it like this 
+Command on Terminal "docker build -t python-sandbox-integrated:latest".
+
+If the build is successful  you can test it like this.
+
 "docker run --rm -i python-sandbox-integrated:latest python /app/mcp_server.py --stdio"
 
 For this point there are two ways to run the Python sandbox.
@@ -30,7 +34,7 @@ There is plenty of documentation  around this.
 Local within the LM studio chat interface.
 
 1. Copy the mcp file provided , edit as required for local IP 
-2. Make sure that you local firewall provided exceptions to the ports used.
+2. Make sure that you local firewall provided exceptions to the ports used and local volumes defined in JSON and Docker compose are local to your system.
 3. Make sure that you launch the side-car with docker compose before you start using the MCP server.
 4. It is as simple as docker compose up -d
 5. Using the mcp file provided , LM studio will manage everything for you. No need to run docker manually.
