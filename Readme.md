@@ -15,7 +15,7 @@ The full stack includes three main components:
 This project is designed to work with Linux ecosystem, I am using Ubuntu 22.04 LTS,
 I have not tested in on windows, or windows docker.
 
-You would require some familiarity with editing python and docker code.
+You would require some familiarity with editing python, docker code and LM studio.
 
 To get started first clone the repo and the starts with building the docker image of
 core MCP server. Docker file is locate under "MCP_core_server"
