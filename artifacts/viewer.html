@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Artifact Viewer</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      margin: 0; padding: 16px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      display: grid; place-items: center; min-height: 100dvh;
+      background: Canvas; color: CanvasText;
+    }
+    .wrap { max-width: 96vw; }
+    img, video, iframe { max-width: 96vw; max-height: 90dvh; display: block; margin: 0 auto; }
+    .meta { margin: 12px 0 0; font-size: 0.9rem; opacity: 0.8; text-align: center; }
+    a { color: inherit; }
+    .error { color: #b00; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="slot"></div>
+    <div id="meta" class="meta"></div>
+  </div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      let src = params.get('src') || '';
+      if (!src) {
+        document.getElementById('slot').innerHTML =
+          '<p class="error">No <code>src</code> specified. Try <code>?src=/run-id/file.png</code>.</p>';
+        return;
+      }
+      if (!src.startsWith('/')) src = '/' + src;
+
+      // Basic content sniff to decide how to embed (image/video/other)
+      const ext = src.split('.').pop().toLowerCase();
+      const slot = document.getElementById('slot');
+      const meta = document.getElementById('meta');
+
+      const isImg = ['png','jpg','jpeg','gif','webp','svg','bmp','tif','tiff'].includes(ext);
+      const isVid = ['mp4','webm','ogg'].includes(ext);
+      const isHtml = ['html','htm'].includes(ext);
+      const isPdf = ext === 'pdf';
+
+      if (isImg) {
+        const img = new Image();
+        img.alt = src;
+        img.src = src;
+        slot.appendChild(img);
+      } else if (isVid) {
+        const v = document.createElement('video');
+        v.src = src; v.controls = true; v.playsInline = true;
+        slot.appendChild(v);
+      } else if (isPdf || isHtml) {
+        const f = document.createElement('iframe');
+        f.src = src; f.loading = 'eager';
+        f.width = '100%'; f.height = '90vh'; f.setAttribute('style','border:0');
+        slot.appendChild(f);
+      } else {
+        const a = document.createElement('a');
+        a.href = src; a.textContent = 'Open file';
+        slot.appendChild(a);
+      }
+
+      meta.innerHTML = `
+        <div>
+          <code>${src.replace(/</g,'&lt;')}</code>
+          &nbsp;&middot;&nbsp;
+          <a href="${src}" download>download</a>
+          &nbsp;&middot;&nbsp;
+          <a href="${src}" target="_blank" rel="noopener">open raw</a>
+        </div>`;
+    })();
+  </script>
+</body>
+</html>
+

@@ -36,7 +36,7 @@ Local within the LM studio chat interface.
 1. Copy the mcp file provided , edit as required for local IP 
 2. Make sure that you local firewall provided exceptions to the ports used and local volumes defined in JSON and Docker compose are local to your system.
 3. Make sure that you launch the side-car with docker compose before you start using the MCP server.
-4. It is as simple as docker compose up -d
+4. It is as simple as docker compose up -d , side-car provides image persistence.
 5. Using the mcp file provided , LM studio will manage everything for you. No need to run docker manually.
 6. Important for python environment to work that you use the system prompt provided "system_prompt.txt".
 7. The Model you are using is capable of tool calling like "qwen.qwen3-coder-30b-a3b-instruct"
@@ -59,4 +59,5 @@ so the concentration would be to get the Gradio working.
 6. To Run "docker compose --env-file .env -f docker-compose.external_v3.yml up -d"
 7. Now we need to check that each component is working properly.
 8. Execute this command "docker logs mcp_lmstudio_ui_ext --tail 120". You should see UI listening of set interface.
-9. 
+
+
