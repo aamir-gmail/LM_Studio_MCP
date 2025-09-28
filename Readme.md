@@ -20,11 +20,11 @@ You would require some familiarity with editing python and docker code.
 To get started first clone the repo and the starts with building the docker image of
 core MCP server. Docker file is locate under "MCP_core_server"
 
-Command on Terminal "docker build -t python-sandbox-integrated:latest".
+Command on Terminal "docker build -t python-sandbox-integrated_v2:latest".
 
 If the build is successful  you can test it like this.
 
-"docker run --rm -i python-sandbox-integrated:latest python /app/mcp_server.py --stdio"
+"docker run --rm -i -p 8000:8000   -e PUBLIC_BASE_URL=http://{YOUR_LOCAL_IP}:8000   python-sandbox-integrated_v2:latest   python /app/mcp_server.py --stdio"
 
 For this point there are two ways to run the Python sandbox.
 
